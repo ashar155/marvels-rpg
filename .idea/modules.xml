@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/marvels-rpg.iml" filepath="$PROJECT_DIR$/marvels-rpg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/marvels-rpg_main.iml" filepath="$PROJECT_DIR$/.idea/modules/marvels-rpg_main.iml" group="marvels-rpg" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/marvels-rpg_test.iml" filepath="$PROJECT_DIR$/.idea/modules/marvels-rpg_test.iml" group="marvels-rpg" />
+    </modules>
+  </component>
+</project>
