@@ -14,9 +14,11 @@ public class FightUtil {
         hero.decreaseHealth(heroDamage > 0 ? heroDamage : 0);
         villain.decreaseHealth(enemyDamage > 0 ? enemyDamage : 0);
         out.println();
-        out.printf("Hero -> Name: %s, Weapon: %s, Heath: %s", hero.getName(), hero.getWeapon(), hero.health());
-        out.println();
-        out.printf("Enemy -> Name: %s, Weapon: %s, Heath: %s", villain.getName(), enemyWeapon, villain.health());
-        out.println();
+        if (hero.health() > 0 & villain.health() > 0) {
+            out.printf("Hero -> Name: %s, Weapon: %s, Heath: %s", hero.getName(), hero.getWeapon(), hero.health());
+            out.println();
+            out.printf("Enemy -> Name: %s, Weapon: %s, Heath: %s", villain.getName(), enemyWeapon, villain.health());
+            out.println();
+        }
     }
 }

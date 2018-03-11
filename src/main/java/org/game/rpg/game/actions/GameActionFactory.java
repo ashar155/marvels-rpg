@@ -10,7 +10,7 @@ public class GameActionFactory {
     private GameActionFactory() {
     }
 
-    public static GameAction launch(Action mode) {
+    public static GameAction launch(final Action mode) {
         switch (mode) {
             case START:
                 return new StartGame();

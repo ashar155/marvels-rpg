@@ -1,0 +1,25 @@
+======================================================================================================
+
+Hello Champion,
+
+Start the game:
+1. Go to main menu.
+2. Choose New Game option.
+3. Choose your Character. Every character comes with different set of skills and power.
+4. Explore the arena to find your enemy.
+5. When you will see enemy, you will see number of weapons.
+6. Choose the weapon every time to attack enemy(Every weapon comes with different attack and defence power. So choose your weapon as per your need and wisely).
+7. Explore and kill all the enemies to win the game.
+
+Save current game:
+Press F1 key at any point in game to save current game and exit.
+
+Resume previous saved game:
+Go to main menu. Press Resume game. Your saved game will start from where you left last time.
+
+Exit the game:
+To exit the game without saving it type Exit. It will take you out from the game without saving anything.
+
+
+
+=======================================================================================================

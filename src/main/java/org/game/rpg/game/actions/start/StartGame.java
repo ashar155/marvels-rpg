@@ -6,7 +6,8 @@ import org.game.rpg.game.map.NavigationMap;
 import org.game.rpg.inventory.characterInventory.CharacterInventory;
 import org.game.rpg.inventory.characterInventory.hero.Hero;
 import org.game.rpg.inventory.characterInventory.hero.HeroType;
-import org.game.rpg.view.console.Menu;
+import org.game.rpg.view.View;
+import org.game.rpg.view.console.ConsoleMenu;
 
 public class StartGame implements GameAction {
     @Override
@@ -17,10 +18,10 @@ public class StartGame implements GameAction {
     }
 
     private void traverseThroughMap(Hero userCharacter) {
-        NavigationMap traverse = new NavigationMap(userCharacter);
+        final NavigationMap traverse = new NavigationMap(userCharacter);
         do {
-            Menu<Direction> directionMenu = new Menu<>("Explore", "Please enter operation number", Direction.values());
-            Direction direction = directionMenu.readUserChoice();
+            final View<Direction> directionMenu = new ConsoleMenu<>(Direction.TITLE, Direction.FOOTER_MESSAGE, Direction.values());
+            final Direction direction = directionMenu.readUserChoice();
             switch (direction) {
                 case UP:
                     traverse.goUp();
@@ -40,7 +41,7 @@ public class StartGame implements GameAction {
     }
 
     private HeroType createCharacter() {
-        Menu<HeroType> heroTypeMenu = new Menu<>("Choose Character", "Please enter operation number", HeroType.values());
+        final View<HeroType> heroTypeMenu = new ConsoleMenu<>(HeroType.TITLE, HeroType.FOOTER_MESSAGE, HeroType.values());
         return heroTypeMenu.readUserChoice();
     }
 }

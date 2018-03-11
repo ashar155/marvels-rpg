@@ -2,12 +2,17 @@ package org.game.rpg;
 
 import org.game.rpg.game.actions.GameActionFactory;
 import org.game.rpg.game.actions.Action;
-import org.game.rpg.view.console.Menu;
+import org.game.rpg.view.View;
+import org.game.rpg.view.console.ConsoleMenu;
 
 public class Launcher {
 
-    public static void main(String[] args) {
-        Menu<Action> launchMenu = new Menu<>("Welcome to Marvel's Universe", "Please choose operation number: ", Action.values());
+    public static void main(final String[] args) {
+        launchGame();
+    }
+
+    public static void launchGame() {
+        final View<Action> launchMenu = new ConsoleMenu<>(Action.TITLE, Action.FOOTER_MESSAGE , Action.values());
         GameActionFactory.launch(launchMenu.readUserChoice()).action();
     }
 }

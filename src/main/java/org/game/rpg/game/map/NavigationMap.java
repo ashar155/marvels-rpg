@@ -7,11 +7,12 @@ import org.game.rpg.inventory.characterInventory.villain.Villain;
 import org.game.rpg.inventory.characterInventory.villain.VillainType;
 import org.game.rpg.inventory.weapons.Weapon;
 import org.game.rpg.util.FightUtil;
-import org.game.rpg.view.console.Menu;
+import org.game.rpg.util.GameUtil;
+import org.game.rpg.view.View;
+import org.game.rpg.view.console.ConsoleMenu;
 
 import java.util.HashMap;
 
-import static java.lang.System.exit;
 import static java.lang.System.out;
 import static java.util.Objects.isNull;
 
@@ -71,12 +72,12 @@ public class NavigationMap implements Map {
     }
 
     private void fight(Villain enemy) {
-        Menu<Weapon> weaponMenu = new Menu<>("Choose Weapon to fight", "Please put operation number to select weapon", userCharacter.getWeaponList());
+        final View<Weapon> weaponMenu = new ConsoleMenu<>("Choose Weapon to fight", "Please put operation number to select weapon", userCharacter.getWeaponList());
         Weapon userWeapon = weaponMenu.readUserChoice();
         userCharacter.setWeapon(userWeapon);
         FightUtil.attack(userCharacter, enemy);
         if(userCharacter.health() <= 0) {
-            gameOver();
+            GameUtil.gameOver();
         }
 
         if(enemy.health() <= 0) {
@@ -89,11 +90,6 @@ public class NavigationMap implements Map {
     private void enemyDied(Villain villain) {
         initialMap.remove(villain);
         out.println("Enemy died");
-    }
-
-    private void gameOver() {
-        out.println("Game Over");
-        exit(1);
     }
 
     private boolean checkEnemy() {

@@ -1,5 +1,7 @@
 package org.game.rpg.view.console;
 
+import org.game.rpg.view.View;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.BiPredicate;
@@ -11,7 +13,7 @@ import static java.lang.Integer.parseInt;
 import static java.lang.System.out;
 import static java.util.stream.Collectors.toList;
 
-public class Menu<T> {
+public class ConsoleMenu<T extends Enum> implements View<T>{
     private String title;
     private String promptMessage;
     private List<T> items;
@@ -30,7 +32,7 @@ public class Menu<T> {
     };
 
     @SafeVarargs
-    public Menu(String title, String promptMessage, T... items) {
+    public ConsoleMenu(final String title, final String promptMessage, final T... items) {
         this.title = title;
         this.promptMessage = promptMessage;
         this.items = Stream.of(items).collect(toList());
@@ -55,7 +57,7 @@ public class Menu<T> {
         return readUserChoice();
     }
 
-    private void printMenu() {
+    public void printMenu() {
         out.println(title.toUpperCase());
         IntStream.rangeClosed(1, items.size())
                 .mapToObj(this::formatToItem)
@@ -64,7 +66,7 @@ public class Menu<T> {
     }
 
     private String formatToItem(int i) {
-        return String.format("%2s. %s", i, items.get(i - 1));
+        return String.format("%2s. %s", i, items.get(i - 1).toString());
     }
 
     private void print(String message) {

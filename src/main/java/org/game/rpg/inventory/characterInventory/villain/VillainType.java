@@ -31,4 +31,10 @@ public enum VillainType {
     public int getHealth() {
         return health;
     }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", health=" + health;
+    }
 }
