@@ -3,7 +3,6 @@ package org.game.rpg.game.actions;
 public enum Action {
     START("Start"),
     RESUME("Resume"),
-    SAVE("Save"),
     HELP("Help"),
     STORY("Story");
 

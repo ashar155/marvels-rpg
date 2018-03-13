@@ -13,6 +13,6 @@ public class Launcher {
 
     public static void launchGame() {
         final View<Action> launchMenu = new ConsoleMenu<>(Action.TITLE, Action.FOOTER_MESSAGE , Action.values());
-        GameActionFactory.launch(launchMenu.readUserChoice()).action();
+        GameActionFactory.getGameAction(launchMenu.readUserChoice()).action();
     }
 }

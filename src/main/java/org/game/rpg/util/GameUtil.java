@@ -12,4 +12,9 @@ public class GameUtil {
         out.println("Game Over");
         exit(1);
     }
+
+    public static void exitGame() {
+        out.println("Exiting Game");
+        exit(1);
+    }
 }

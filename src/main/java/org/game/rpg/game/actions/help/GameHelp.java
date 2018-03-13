@@ -11,30 +11,39 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import static java.lang.System.out;
+import static java.lang.Thread.currentThread;
+import static java.util.Collections.singletonList;
 
 public class GameHelp implements GameAction {
+
+    private static final List<String> HELP_CURRENTLY_UNAVAILABLE_MESSAGE = singletonList("Help is currently not available");
+
     @Override
     public void action() {
         List<String> helpMessage;
         try {
-            URL resource = Thread.currentThread().getContextClassLoader().getResource("help.txt");
-            helpMessage = Files.readAllLines(Paths.get(resource.toURI()));
+            URL resource = currentThread().getContextClassLoader().getResource("help.txt");
+            if (Objects.nonNull(resource)) {
+                helpMessage = Files.readAllLines(Paths.get(resource.toURI()));
+            } else {
+                helpMessage = HELP_CURRENTLY_UNAVAILABLE_MESSAGE;
+            }
         } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
-            helpMessage = Collections.singletonList("Help is currently not available");
+            helpMessage = HELP_CURRENTLY_UNAVAILABLE_MESSAGE;
         }
 
         helpMessage.forEach(out::println);
-        View<PostHelpAction> postHelpActionMenu = new ConsoleMenu<>("", "Please put operation number", PostHelpAction.values());
-        PostHelpAction postHelpAction = postHelpActionMenu.readUserChoice();
-        if(postHelpAction == PostHelpAction.RETURN) {
+        final View<PostHelpAction> postHelpActionMenu =
+                new ConsoleMenu<>("", "Please put operation number", PostHelpAction.values());
+        final PostHelpAction postHelpAction = postHelpActionMenu.readUserChoice();
+        if (postHelpAction == PostHelpAction.RETURN) {
             Launcher.launchGame();
         } else {
-            GameUtil.gameOver();
+            GameUtil.exitGame();
         }
     }
 
